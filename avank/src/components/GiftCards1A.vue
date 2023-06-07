@@ -4,6 +4,10 @@
             <Header></Header>
             <GetYourGiftCard></GetYourGiftCard>
             <GetStarted></GetStarted>
+            <FAQs></FAQs>
+            <EmailInput></EmailInput>
+            <Services></Services>
+            <FooterA></FooterA>
         </div>
     </div>
 </template>
@@ -12,10 +16,23 @@
 import Header from './Header.vue'
 import GetYourGiftCard from './GetYourGiftCard.vue'
 import GetStarted from './GetStarted.vue'
+import FAQs from './FAQs.vue'
+import EmailInput from './EmailInput.vue'
+import Services from './Services.vue'
+import FooterA from './FooterA.vue'
 
 export default {
     name:'GiftCards1A',
-    components:{Header,GetYourGiftCard,GetStarted},
+    components:
+        {
+            Header,
+            GetYourGiftCard,
+            GetStarted,
+            FAQs,
+            EmailInput,
+            Services,
+            FooterA
+        },
     // data() {
         
     // },
@@ -26,7 +43,14 @@ export default {
 
 .GiftCards{
     font-family: Montserrat;
-    overflow: hidden;
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: center;
+}
+
+.GiftCards-main{
+    /* max-width: 1265px; */
+    width: 1265px;
 }
 
 </style>

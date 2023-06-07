@@ -67,6 +67,9 @@ export default {
 </script>
 
 <style scoped>
+.get-your-gift-card-main{
+    width: 1265px;
+}
 .get-gift {
     height: 530px;
     background: radial-gradient(57.84% 189.04% at 30.77% 42.16%, #BEC6C6 0%, #DEE6E6 100%)

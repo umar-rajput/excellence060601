@@ -51,9 +51,12 @@ export default {
 li {
     list-style-type: none;
 }
-
+.header-main{
+    width: 1265px;
+}
 .navbar {
     padding: 15px 50px;
+    width: 1265px;
 }
 
 .list ul {
