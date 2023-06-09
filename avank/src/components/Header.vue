@@ -56,6 +56,7 @@ li {
 }
 .navbar {
     padding: 15px 50px;
+    margin: 0px;
     width: 1265px;
 }
 

@@ -12,9 +12,9 @@
 <script>
 export default {
     name: `EmailInput`,
-    data() {
+    // data() {
 
-    },
+    // },
 }
 </script>
 

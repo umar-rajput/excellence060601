@@ -13,9 +13,9 @@
 export default {
     name:'FAQsButton',
     props:['question'],
-    data() {
+    // data() {
         
-    },
+    // },
 }
 </script>
 

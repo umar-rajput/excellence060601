@@ -68,9 +68,9 @@
 <script>
 export default {
     name: `FooterA`,
-    data() {
+    // data() {
 
-    },
+    // },
 }
 </script>
 

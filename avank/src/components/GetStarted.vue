@@ -1,12 +1,12 @@
 <template>
     <div class="get-started">
         <div class="get-started-main">
-            <div class="heading">
+            <div class="heading text-center">
                 <p class="heading-1 mb-1" style="font-weight:700; font-size: 32px;"> Get started in a few minutes</p>
                 <p class="heading-2 mb-5" style="font-weight:300">Avank Crypto supports a variety of the most popular
                     digital currencies</p>
             </div>
-            <div class="boxes d-flex">
+            <div class="boxes d-flex justify-content-center">
                 <GetStartedBox no="1" heading="Select the values to exchange"
                     para="We store the vast majority of the digital assets in secure." :src="imgUrl1" class="box1">
                 </GetStartedBox>
@@ -42,9 +42,9 @@ export default {
 
 <style scoped>
 .get-started-main {
-    margin: 50px 120px;
-    padding: 0px 100px;
-    width:1265px;
+    margin: 50px 0px;
+    padding: 0px 0px;
+    width: 1265px;
 }
 
 .box1 {

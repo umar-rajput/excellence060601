@@ -24,9 +24,9 @@
 <script>
 export default {
     name:`Services`,
-    data() {
+    // data() {
         
-    },
+    // },
 }
 </script>
 
