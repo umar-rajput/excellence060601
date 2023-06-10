@@ -18,8 +18,8 @@
                             <label for="spend" class="mb-2 label">I want to spend</label> <br>
                             <input class="" id="spend" v-model="amountOne">
                             <select class="form-selec input-inner" aria-label="Default select example" v-model="selected1">
-                                <option v-for="(currency,index) in currencies" v-bind:key="index">{{ currency }}</option>
-                                <!-- <option value="1">€ EUR -->
+                                <!-- <option v-for="(currency,index) in currencies" v-bind:key="index">{{ currency }}</option> -->
+                                <option value="eur">€ EUR
                                     <!-- <div class="euro-circle">
                                         <span style="font-weight: 600;">€</span>
                                     </div>
@@ -28,10 +28,10 @@
                                         <i class="fa-solid fa-angle-up up"></i>
                                         <i class="fa-solid fa-angle-down down"></i>
                                     </div> -->
-                                <!-- </option> -->
-                                <!-- <option value="2">₹ INR</option>
-                                <option value="3">$ USD</option>
-                                <option value="4">£ GBP</option> -->
+                                </option>
+                                <option value="inr">₹ INR</option>
+                                <option value="usd">$ USD</option>
+                                <option value="gbp">£ GBP</option>
                             </select>
                             <!-- <div class="eur input-inner">
                                 <div class="euro-circle">
@@ -48,11 +48,11 @@
                             <label for="buy" class="form-label label">I want to buy</label>
                             <input class="" id="buy" disabled v-model="amountTwo">
                             <select class="form-selec input-inner" aria-label="Default select example" v-model="selected2">
-                                <option v-for="(crypto,index) in cryptos" v-bind:key="index">{{ crypto }}</option>
-                                <!-- <option value="1">Ξ ETH</option>
-                                <option value="2">₿ BTC</option>
-                                <option value="3">₮ USDT</option>
-                                <option value="4">Ð DOGE</option> -->
+                                <!-- <option v-for="(crypto,index) in cryptos" v-bind:key="index">{{ crypto }}</option> -->
+                                <option value="eth">Ξ ETH</option>
+                                <option value="btc">₿ BTC</option>
+                                <option value="usdt">₮ USDT</option>
+                                <option value="doge">Ð DOGE</option>
                             </select>
                             <!-- <div class="eur input-inner">
                                 <div class="euro-circle">
@@ -67,7 +67,7 @@
                             </div> -->
                         </div>
                         <div class="mb-4">
-                            <p>You get {{ amountTwo }} ETH for {{ amountOne }} EUR
+                            <p>You get {{ amountTwo }} {{ selected1 }} for {{ amountOne }} {{ selected2 }}
                                 <!-- <span class=" border border-2 border-dark rounded-circle ">?</span> -->
                                 <i class="fa-regular fa-circle-question"></i>
                             </p>
@@ -90,16 +90,39 @@ export default {
             currency_two: "",
             rate: "",
             amountOne: 0,
-            amountTwo: [],
-            selected1:"€ EUR",
-            selected2:"Ξ ETH",
+            amountTwo: 0,
+            selected1:"eur",
+            selected2:"eth",
             currencies:["€ EUR","₹ INR","$ USD","£ GBP"],
             cryptos:["Ξ ETH","₿ BTC","₮ USDT","Ð DOGE"]
         }
     },
     async updated() {
-        let res = await axios.get("http://localhost:3000/convertor");
+        // let res = await axios.get("http://localhost:3000/convertor");
+        let res = await axios.get("http://localhost:3000/converter");
         // console.log(res.data);
+        // for(let i=0; i<res.data.legth; i++){
+        //     console.log("array value",res.data[i].base);
+        // }
+        for (let i = 0; i < res.data.length; i++) {
+            console.log("runing...........");
+            // console.log("currency",res.data[i].base);
+            // console.log("selected", this.selected1);
+            // console.log("checking..", this.selected1==res.data[i].base);
+            if (this.selected1==res.data[i].base) {
+                let exchange=Object.keys(res.data[i].exchange_rates);
+                let exchange_value=Object.values(res.data[i].exchange_rates);
+                for(let j=0; j< exchange.length; j++){
+                    console.log("checking..", exchange[j]);
+                    // console.log(this.selected2);
+                    if (this.selected2==exchange[j]) {
+                        // console.log("giving..",this.amountTwo=exchange_value[j]);
+                        this.amountTwo=exchange_value[j]*this.amountOne;
+                    }
+                    // console.log("giving..", this.currency_two=Object.keys(res.data[i].exchange_rates)[j]);
+                }
+            }
+        }
         // console.log("ckecking value", this.amountOne);
         // console.log("compare value", res.data[0].eur);
         // console.log("chcking", res.data[0].eth);
@@ -111,19 +134,20 @@ export default {
             // console.log("compare",this.amountOne);
             // console.log(this.amountOne == res.data[i].eur);
         //     console.log("runnig....");
-        //     console.log(this.currency_one);
-        //     console.log(this.selected1);
-        //     console.log( );
-        //     console.log(this.currency==this.selected1);
+            // console.log(this.currency_one);
+            // console.log(this.selected1);
+            // console.log(res.data);
+            // console.log( );
+            // console.log(this.currency==this.selected1);
         // if(this.currency==this.selected1){
         //     // console.log();
         // }    
-        for (let i = 0; i < res.data.length; i++) {
-            if (this.amountOne == res.data[i].eur) {
-                console.log("giving value", this.amountTwo = res.data[i].eth);
-            } 
+        // for (let i = 0; i < res.data.length; i++) {
+        //     if (this.amountOne == res.data[i].eur) {
+        //         console.log("giving value", this.amountTwo = res.data[i].eth);
+        //     } 
             
-        }
+        // }
         console.log("--------------------");
         // if (this.amountOne == res.data[0].eth) {
         //     console.log("giving value", this.amountTwo = res.data[0].eth);
